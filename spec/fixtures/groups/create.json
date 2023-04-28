@@ -1,0 +1,22 @@
+{
+  "id": "5604275",
+  "title": "Google News",
+  "description": "discuss latest news",
+  "website": "",
+  "access_code": "QM6JC-D7VKK",
+  "category": null,
+  "options": {
+    "member_post": 1,
+    "member_post_comment": 1,
+    "create_discussion": 0,
+    "create_files": 0,
+    "invite_type": 0
+  },
+  "group_code": "",
+  "picture_url": "http:\/\/...group-default.gif",
+  "school_id": "344232",
+  "building_id": "344232",
+  "links": {
+    "self": "http:\/\/...\/v1\/groups\/5604275"
+  }
+}

@@ -74,6 +74,7 @@ GEM
     unicode-display_width (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-20
   x86_64-darwin-21
 
 DEPENDENCIES
@@ -83,4 +84,4 @@ DEPENDENCIES
   schoology!
 
 BUNDLED WITH
-   2.3.26
+   2.3.6

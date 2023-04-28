@@ -1,4 +1,4 @@
-module Vultr
-  class BareMetal < Object
+module Schoology
+  class Group < Object
   end
 end
