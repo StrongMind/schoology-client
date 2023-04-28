@@ -5,8 +5,8 @@ require_relative "lib/schoology/version"
 Gem::Specification.new do |spec|
   spec.name = "schoology"
   spec.version = Schoology::VERSION
-  spec.authors = ["Angel Diaz"]
-  spec.email = ["88393833+adiaz04@users.noreply.github.com"]
+  spec.authors = ["Strongmind"]
+  spec.email = ["qwertytalk@strongmind.com"]
 
   spec.summary = "TODO: Write a short summary, because RubyGems requires one."
   spec.description = "TODO: Write a longer description or delete this line."
