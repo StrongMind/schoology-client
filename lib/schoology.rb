@@ -1,8 +1,8 @@
 # frozen_string_literal: true
-
+require "faraday"
+require "faraday_middleware"
 require_relative "schoology/version"
 
 module Schoology
-  class Error < StandardError; end
-  # Your code goes here...
+  autoload :Client, "schoology/client"
 end

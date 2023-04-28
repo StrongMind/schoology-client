@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-RSpec.describe Client do
+RSpec.describe Schoology::Client do
   it "has an api key" do
     client = Schoology::Client.new(oauth_token: "1234")
-    assert_equal "1234", client.oauth_token
+    expect(client.oauth_token).to eq("1234")
   end
 
 end
