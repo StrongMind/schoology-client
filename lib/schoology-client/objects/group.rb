@@ -1,4 +1,4 @@
-module Schoology
+module SchoologyClient
   class Group < Object
   end
 end

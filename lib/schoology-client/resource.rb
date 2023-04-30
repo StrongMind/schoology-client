@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Schoology
+module SchoologyClient
   class Resource
     attr_reader :client
 
