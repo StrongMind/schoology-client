@@ -3,7 +3,7 @@
 require_relative "lib/schoology-client/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "schoology-client"
+  spec.name = "strongmind-schoology-client"
   spec.version = SchoologyClient::VERSION
   spec.authors = ["Strongmind"]
   spec.email = ["qwertytalk@strongmind.com"]

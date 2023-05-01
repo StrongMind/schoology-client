@@ -1,7 +1,6 @@
 name: Publish Gem
 
-on: 
-  workflow_dispatch:
+on:   [push, workflow_dispatch]
   
 jobs:
   Dotnet-build:
