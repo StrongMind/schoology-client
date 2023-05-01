@@ -1,0 +1,11 @@
+name: Publish Gem
+
+on: 
+  workflow_dispatch:
+  
+jobs:
+  Dotnet-build:
+    uses: Strongmind/global-build/.github/workflows/publish-gem.yml@main
+    with: 
+      ruby_version: '3.1.4'
+    secrets: inherit
