@@ -8,6 +8,7 @@ module SchoologyClient
   autoload :Client, "schoology-client/client"
   autoload :Object, "schoology-client/object"
   autoload :Resource, "schoology-client/resource"
+  autoload :Error, "schoology-client/error"
 
   # High-level categories of Schoology API calls
   autoload :GroupResource, "schoology-client/resources/group"

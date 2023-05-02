@@ -9,7 +9,7 @@ module SchoologyClient
     end
 
     def post_request(url, body:, headers: {})
-      handle_response client.connection.post(url, body, headers)
+      handle_response @client.connection.post(url, body, headers)
     end
 
     def handle_response(response)

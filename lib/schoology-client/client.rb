@@ -1,8 +1,11 @@
 # frozen_string_literal: true
+require 'faraday'
+require 'faraday_middleware'
+require 'oauth'
 
 module SchoologyClient
   class Client
-    BASE_URL = "https://schoologysandbox.schoology.com/v1"
+    BASE_URL = "https://api.schoology.com/v1"
 
     attr_reader :oauth_token, :adapter
 
@@ -18,14 +21,25 @@ module SchoologyClient
     end
 
     def connection
-      @connection ||= Faraday.new(BASE_URL) do |conn|
-        conn.request :authorization, :Bearer, oauth_token
-        conn.request :json
+      consumer_key = "2c40b07185fbd031567affed01fcff630644fee80"
+      consumer_secret = "fd5863739d9f50922aa4f1cb9f4a4908"
 
-        conn.response :dates
-        conn.response :json, content_type: "application/json"
+      # Set up the OAuth 1.0 consumer
+      consumer = OAuth::Consumer.new(
+        consumer_key,
+        consumer_secret,
+        site: BASE_URL,
+        scheme: :header,
+        signature_method: 'PLAINTEXT',
+        realm: 'Schoology API'
+      )
 
-        conn.adapter adapter, @stubs
+      # Set up the Faraday connection
+      # Set up the Faraday connection
+      connection = Faraday.new(BASE_URL) do |conn|
+        conn.request :url_encoded
+        conn.response :json
+        conn.adapter Faraday.default_adapter
       end
     end
   end
