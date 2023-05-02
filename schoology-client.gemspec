@@ -3,7 +3,7 @@
 require_relative "lib/schoology-client/version"
 
 Gem::Specification.new do |spec|
-  spec.name = "schoology-client"
+  spec.name = "strongmind-schoology-client"
   spec.version = SchoologyClient::VERSION
   spec.authors = ["Strongmind"]
   spec.email = ["qwertytalk@strongmind.com"]
@@ -12,7 +12,7 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://github.com/Strongmind/schoology-client"
   spec.required_ruby_version = ">= 2.6.0"
 
-  spec.metadata["allowed_push_host"] = "Set to your gem server 'https://example.com'"
+  spec.metadata["allowed_push_host"] = "https://rubygems.org/"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/Strongmind/schoology-client"
