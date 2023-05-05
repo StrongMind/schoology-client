@@ -2,6 +2,7 @@
 
 require "faraday"
 require "faraday_middleware"
+require "rails/all"
 require_relative "schoology-client/version"
 
 module SchoologyClient
