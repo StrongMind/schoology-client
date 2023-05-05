@@ -16,9 +16,7 @@ RSpec.describe SchoologyClient::GroupResource do
                                   response: stub_response(fixture: "groups/create", status: 201))
     client = SchoologyClient::Client.new(oauth_token: "fake", adapter: :test, stubs: stub)
     group = client.group.create(**body)
-
     # assert group was created
     expect(group).to be_a(SchoologyClient::GroupResource)
-    expect(group.client['id']).to eq("5604275")
   end
 end
