@@ -15,4 +15,12 @@ module SchoologyClient
 
   # Classes used to return a nicer object wrapping the response data
   autoload :Group, "schoology/objects/group"
+
+  class Railtie < Rails::Railtie
+    initializer 'schoology-client.insert_into_initializer' do
+      config_path = Rails.root.join('config/initializers/schoology-client.rb')
+      template_path = File.expand_path('../../templates/rails/initializer/schoology-client.rb.tt', __FILE__)
+      File.write(config_path, ERB.new(File.read(template_path)).result)
+    end
+  end
 end
