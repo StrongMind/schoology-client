@@ -6,6 +6,6 @@ on:
 jobs:
   PublishGem:
     uses: Strongmind/global-build/.github/workflows/publish-gem.yml
-    with: 
+    with:
       ruby_version: '3.1.4'
     secrets: inherit
