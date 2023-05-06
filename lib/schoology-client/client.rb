@@ -11,8 +11,8 @@ module SchoologyClient
 
     def initialize(adapter: Faraday.default_adapter, stubs: nil)
       @adapter = adapter
-      @oauth_consumer_key = SchoologyClient.config.oauth_consumer_key
-      @oauth_consumer_secret = SchoologyClient.config.oauth_consumer_secret
+      @oauth_consumer_key = SchoologyClient.configuration.oauth_consumer_key
+      @oauth_consumer_secret = SchoologyClient.configuration.oauth_consumer_secret
 
       #used for specs
       @stubs = stubs
@@ -43,6 +43,7 @@ module SchoologyClient
         conn.adapter adapter, @stubs
       end
     end
+
   end
 end
 

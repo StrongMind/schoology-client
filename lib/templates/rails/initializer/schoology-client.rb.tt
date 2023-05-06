@@ -1,5 +1,0 @@
-SchoologyClient.configure |config|
-    config.consumer_key = ENV['SCHOOLOGY_CONSUMER_KEY']
-    config.consumer_secret = ENV['SCHOOLOGY_CONSUMER_SECRET']
-    config.url = ENV['SCHOOLOGY_URL']
-end
