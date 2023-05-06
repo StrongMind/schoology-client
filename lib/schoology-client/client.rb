@@ -5,14 +5,13 @@ require 'oauth'
 
 module SchoologyClient
   class Client
-    BASE_URL = "https://api.schoology.com/v1"
-
-    attr_reader :adapter, :oauth_consumer_key, :oauth_consumer_secret
+    attr_reader :adapter, :oauth_consumer_key, :oauth_consumer_secret, :url, :stubs
 
     def initialize(adapter: Faraday.default_adapter, stubs: nil)
       @adapter = adapter
       @oauth_consumer_key = SchoologyClient.configuration.oauth_consumer_key
       @oauth_consumer_secret = SchoologyClient.configuration.oauth_consumer_secret
+      @url = SchoologyClient.configuration.url
 
       #used for specs
       @stubs = stubs
@@ -28,19 +27,21 @@ module SchoologyClient
       consumer = OAuth::Consumer.new(
         @oauth_consumer_key,
         @oauth_consumer_secret,
-        site: BASE_URL,
+        site: @url,
         scheme: :header,
         signature_method: 'PLAINTEXT',
         realm: 'Schoology API'
       )
 
       # Set up the Faraday connection
-      # Set up the Faraday connection
-      connection = Faraday.new(BASE_URL) do |conn|
+      connection = Faraday.new("#{@url}") do |conn|
         conn.request :url_encoded
         conn.response :json
-        conn.adapter Faraday.default_adapter
-        conn.adapter adapter, @stubs
+        if @stubs
+          conn.adapter adapter, @stubs
+        else
+          conn.adapter adapter
+        end
       end
     end
 

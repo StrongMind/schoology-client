@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "schoology-client"
+require 'json'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
@@ -20,7 +21,7 @@ end
 
 def stub_request(path, response:, method: :get, body: {})
   Faraday::Adapter::Test::Stubs.new do |stub|
-    arguments = [method, "/v1/#{path}"]
+    arguments = [method, "v1/ #{path}"]
     arguments << body.to_json if [:post, :put, :patch].include?(method)
     stub.send(*arguments) { |env| response }
   end
