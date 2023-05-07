@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-require 'schoology-client'
+require 'schoology_client'
 require 'spec_helper'
 
 RSpec.describe SchoologyClient do

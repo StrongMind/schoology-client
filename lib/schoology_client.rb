@@ -3,8 +3,7 @@
 require "faraday"
 require "faraday_middleware"
 require "rails/all"
-require_relative "schoology-client/version"
-require_relative "schoology-client/railtie"
+require_relative "schoology_client/version"
 
 
 module SchoologyClient
@@ -13,15 +12,15 @@ module SchoologyClient
     attr_accessor :configuration
   end
 
-  autoload :Client, "schoology-client/client"
-  autoload :Configuration, "schoology-client/configuration"
-  autoload :Object, "schoology-client/object"
-  autoload :Resource, "schoology-client/resource"
-  autoload :Error, "schoology-client/error"
-  autoload :Railtie, "schoology-client/railtie"
+  autoload :Client, "schoology_client/client"
+  autoload :Configuration, "schoology_client/configuration"
+  autoload :Object, "schoology_client/object"
+  autoload :Resource, "schoology_client/resource"
+  autoload :Error, "schoology_client/error"
+  autoload :Railtie, "schoology_client/railtie"
 
   # High-level categories of Schoology API calls
-  autoload :GroupResource, "schoology-client/resources/group"
+  autoload :GroupResource, "schoology_client/resources/group"
 
   # Classes used to return a nicer object wrapping the response data
   autoload :Group, "schoology/objects/group"
