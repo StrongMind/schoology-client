@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require 'rails/generators/base'
+require 'rails/generatorsi'
 require 'schoology_client'
 
 module SchoologyApi
@@ -13,7 +13,6 @@ module SchoologyApi
       def copy_initializer
         template "schoology_api.rb", "config/initializers/schoology_api.rb"
       end
-
     end
   end
 end
