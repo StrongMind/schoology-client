@@ -36,13 +36,19 @@ module SchoologyClient
       # Set up the Faraday connection
       connection = Faraday.new("#{@url}") do |conn|
         conn.request :url_encoded
-        conn.response :json
+        conn.request :json
+
+        conn.response :dates
+        conn.response :json, content_type: "application/json"
+
         if @stubs
           conn.adapter adapter, @stubs
         else
           conn.adapter adapter
         end
       end
+
+      return connection
     end
 
   end

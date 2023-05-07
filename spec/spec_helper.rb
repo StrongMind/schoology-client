@@ -15,7 +15,7 @@ RSpec.configure do |config|
   end
 end
 
-def stub_response(fixture:, status: 200, headers: { "Content-Type" => "application/json" })
+def stub_response(fixture:, status: 200, headers: {"Content-Type" => "application/json"})
   [status, headers, File.read("spec/fixtures/#{fixture}.json")]
 end
 
