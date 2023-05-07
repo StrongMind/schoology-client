@@ -3,13 +3,14 @@
 require "json"
 require "spec_helper"
 
+
 RSpec.describe SchoologyClient::GroupResource do
 
   before do
     SchoologyClient.configure do |config|
       config.oauth_consumer_key = "test_key"
       config.oauth_consumer_secret = "test_secret"
-      config.url = "https://api.schoology.com/v1"
+      config.url = "https://api.schoology.com"
     end
   end
 
@@ -19,15 +20,10 @@ RSpec.describe SchoologyClient::GroupResource do
 
   it "creates a group" do
     body = {
-      "title": "TestGroup"
+      title: "Test Group"
     }
-
     stub_response = stub_response(fixture: "groups/create", status: 201)
-    stub = stub_request("groups", method: :post, body: body, response: stub_response)
-    puts "##########"
-    puts stub.inspect
-    puts SchoologyClient.configuration.inspect
-    puts "##########"
+    stub = stub_request("#{SchoologyClient.configuration.url}/v1/groups", method: :post, body: body, response: stub_response)
     client = SchoologyClient::Client.new(adapter: :test, stubs: stub)
     group = client.group.create(**body)
     # assert group was created
