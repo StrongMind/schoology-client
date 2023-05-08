@@ -2,9 +2,8 @@
 
 require "faraday"
 require "faraday_middleware"
-require "rails/all"
+require "rails"
 require_relative "schoology_client/version"
-
 
 module SchoologyClient
 
@@ -17,7 +16,6 @@ module SchoologyClient
   autoload :Object, "schoology_client/object"
   autoload :Resource, "schoology_client/resource"
   autoload :Error, "schoology_client/error"
-  autoload :Railtie, "schoology_client/railtie"
 
   # High-level categories of Schoology API calls
   autoload :GroupResource, "schoology_client/resources/group"
