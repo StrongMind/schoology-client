@@ -33,7 +33,7 @@ Gem::Specification.new do |spec|
   # spec.add_dependency "example-gem", "~> 1.0"
   spec.add_dependency "faraday", '~> 1.1'
   spec.add_dependency "faraday_middleware", '~> 1.2'
-  spec.add_dependency "oauth", '~> 1.1'
+  spec.add_dependency "simple_oauth", '~> 0.3.1'
   spec.add_dependency "rails", '~> 7.0'
   spec.add_dependency "railties", "~> 7.0"
 

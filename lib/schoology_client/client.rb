@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 require 'faraday'
 require 'faraday_middleware'
-require 'oauth'
+require 'simple_oauth'
 
 module SchoologyClient
   class Client
@@ -33,7 +33,7 @@ module SchoologyClient
         faraday.response :json
         faraday.adapter @adapter, @stubs
       end
-      return connection
+      connection
     end
 
   end
