@@ -22,32 +22,17 @@ module SchoologyClient
     end
 
     def connection
+      # setup faraday connection using 2-legged oauth 1.0
+      connection = Faraday.new(url: @url) do |faraday|
+        faraday.request :json
+        faraday.request :oauth, {
+          consumer_key: @oauth_consumer_key,
+          consumer_secret: @oauth_consumer_secret
+        }
 
-      # Set up the OAuth 1.0 consumer
-      consumer = OAuth::Consumer.new(
-        @oauth_consumer_key,
-        @oauth_consumer_secret,
-        site: @url,
-        scheme: :header,
-        signature_method: 'PLAINTEXT',
-        realm: 'Schoology API'
-      )
-
-      # Set up the Faraday connection
-      connection = Faraday.new("#{@url}") do |conn|
-        conn.request :url_encoded
-        conn.request :json
-
-        conn.response :dates
-        conn.response :json, content_type: "application/json"
-
-        if @stubs
-          conn.adapter adapter, @stubs
-        else
-          conn.adapter adapter
-        end
+        faraday.response :json
+        faraday.adapter @adapter, @stubs
       end
-
       return connection
     end
 
