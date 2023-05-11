@@ -19,6 +19,7 @@ module SchoologyClient
 
   # High-level categories of Schoology API calls
   autoload :GroupResource, "schoology_client/resources/group"
+  autoload :Resource, "schoology_client/resources/resource"
 
   # Classes used to return a nicer object wrapping the response data
   autoload :Group, "schoology/objects/group"
