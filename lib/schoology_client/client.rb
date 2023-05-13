@@ -5,16 +5,23 @@ require 'simple_oauth'
 
 module SchoologyClient
   class Client
-    attr_reader :adapter, :oauth_consumer_key, :oauth_consumer_secret, :url, :stubs
+    attr_reader :oauth_consumer_key, :oauth_consumer_secret, :url
 
-    def initialize(adapter: Faraday.default_adapter, stubs: nil)
-      @adapter = adapter
-      @oauth_consumer_key = SchoologyClient.configuration.oauth_consumer_key
-      @oauth_consumer_secret = SchoologyClient.configuration.oauth_consumer_secret
-      @url = SchoologyClient.configuration.url
+    def initialize(conn = nil)
+      if conn.nil?
+        # setup faraday connection using 2-legged oauth 1.0
+        @connection = Faraday.new(url: SchoologyClient.configuration.url) do |faraday|
+          faraday.request :json
+          faraday.request :oauth, {
+            consumer_key: SchoologyClient.configuration.oauth_consumer_key,
+            consumer_secret: SchoologyClient.configuration.oauth_consumer_secret
+          }
 
-      #used for specs
-      @stubs = stubs
+          faraday.response :json
+        end
+      else
+        @connection = conn
+      end
     end
 
     def group
@@ -22,18 +29,7 @@ module SchoologyClient
     end
 
     def connection
-      # setup faraday connection using 2-legged oauth 1.0
-      connection = Faraday.new(url: @url) do |faraday|
-        faraday.request :json
-        faraday.request :oauth, {
-          consumer_key: @oauth_consumer_key,
-          consumer_secret: @oauth_consumer_secret
-        }
-
-        faraday.response :json
-        faraday.adapter @adapter, @stubs
-      end
-      connection
+      @connection
     end
 
   end
