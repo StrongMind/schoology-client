@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 require 'faraday'
-require 'faraday_middleware'
-require 'simple_oauth'
+
 
 module SchoologyClient
   class Client

@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "faraday"
-require "faraday_middleware"
 require "rails"
 require_relative "schoology_client/version"
 
@@ -22,6 +21,10 @@ module SchoologyClient
 
   # Classes used to return a nicer object wrapping the response data
   autoload :Group, "schoology/objects/group"
+
+
+  autoload :OAuth,           'schoology_client/oauth'
+  Faraday::Request.register_middleware oauth: -> { OAuth }
 
   def self.configuration
     @configuration ||= SchoologyClient::Configuration.new

@@ -11,6 +11,5 @@ gem "rspec", "~> 3.0"
 
 gem "rubocop", "~> 1.21"
 
-gem 'faraday'
-gem 'faraday_middleware'
-gem 'oauth'
+gem 'faraday', '>= 2.0'
+gem 'simple_oauth'
