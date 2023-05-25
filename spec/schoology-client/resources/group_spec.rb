@@ -3,7 +3,6 @@
 require "spec_helper"
 
 RSpec.describe SchoologyClient::GroupResource do
-
   before do
     SchoologyClient.configure do |config|
       config.oauth_consumer_key = "test_key"
@@ -23,12 +22,14 @@ RSpec.describe SchoologyClient::GroupResource do
     }
 
     stub = stub_request("groups", method: :post, body: body, response: stub_response(fixture: "groups/create", status: 201))
-    client = SchoologyClient::Client.new(adapter: :test, stubs: stub)
+    conn = Faraday.new(SchoologyClient.configuration.url) { |b| b.adapter(:test, stub) }
+    client = SchoologyClient::Client.new(conn)
     group = client.group.create(**body)
 
     expect(group).to be_a(SchoologyClient::GroupResource)
-    expect(group.client['title']).to eq("Test Group")
-    expect(group.client['description']).to eq("This is a test group")
+    group_result = JSON.parse(group.client)
+    expect(group_result['title']).to eq("Test Group")
+    expect(group_result['description']).to eq("This is a test group")
   end
 
 end
