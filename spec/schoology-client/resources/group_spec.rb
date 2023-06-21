@@ -32,4 +32,42 @@ RSpec.describe SchoologyClient::GroupResource do
     expect(group_result['description']).to eq("This is a test group")
   end
 
+  describe 'Update Schoology Group Folder Name' do
+    context 'with valid parameters' do
+      it 'updates the group name' do
+        group_id = 1
+        body = {
+          title: 'Updated Group',
+          description: 'This is an updated group'
+        }
+
+        stub = stub_request("groups/#{group_id}", method: :put, body: body, response: stub_response(fixture: nil, status: 200))
+        conn = Faraday.new(SchoologyClient.configuration.url) { |b| b.adapter(:test, stub) }
+        client = SchoologyClient::Client.new(conn)
+        group = client.group.update(group_id, **body)
+
+        expect(group).to be_a(SchoologyClient::GroupResource)
+      end
+    end
+
+    context 'with invalid parameters' do
+      it 'raises an error' do
+        group_id = 1
+        body = {
+          title: '',
+          description: 'This is an updated group'
+        }
+
+        error_message = 'Your request was malformed. error'
+        stub = stub_request("groups/#{group_id}", method: :put, body: body, response: stub_response(fixture: nil, status: 400, body: { 'error' => error_message }.to_json))
+        conn = Faraday.new(SchoologyClient.configuration.url) { |b| b.adapter(:test, stub) }
+        client = SchoologyClient::Client.new(conn)
+
+        expect {
+          client.group.update(group_id, **body)
+        }.to raise_error(SchoologyClient::Error, error_message)
+      end
+    end
+  end
+
 end

@@ -15,8 +15,12 @@ RSpec.configure do |config|
   end
 end
 
-def stub_response(fixture:, status: 200, headers: {"Content-Type" => "application/json"})
-  [status, headers, File.read("spec/fixtures/#{fixture}.json")]
+def stub_response(fixture: nil, status: 200, headers: { "Content-Type" => "application/json" }, body: "")
+  if fixture.nil?
+    [status, headers, body]
+  else
+    [status, headers, File.read("spec/fixtures/#{fixture}.json")]
+  end
 end
 
 def stub_request(path, response:, method: :get, body: {})
