@@ -38,7 +38,6 @@ RSpec.describe SchoologyClient::GroupResource do
         group_id = 1
         body = {
           title: 'Updated Group',
-          description: 'This is an updated group'
         }
 
         stub = stub_request("groups/#{group_id}", method: :put, body: body, response: stub_response(fixture: nil, status: 200))
@@ -55,7 +54,6 @@ RSpec.describe SchoologyClient::GroupResource do
         group_id = 1
         body = {
           title: '',
-          description: 'This is an updated group'
         }
 
         error_message = 'Your request was malformed. error'
