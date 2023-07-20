@@ -2,7 +2,7 @@ steps:
   - name: Test & publish code coverage
     uses: paambaati/codeclimate-action@v2.5.7
     env:
-      CC_TEST_REPORTER_ID: f14834dbdeba6ded1a829376c61ae64fd2e81410495202b7c11dd3dbed6763fb
+      CC_TEST_REPORTER_ID: "f14834dbdeba6ded1a829376c61ae64fd2e81410495202b7c11dd3dbed6763fb"
     with:
       coverageCommand: npm run coverage
       debug: true
