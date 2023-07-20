@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    strongmind-schoology-client (0.1.3)
+    strongmind-schoology-client (0.1.5)
       faraday (>= 2.0)
       rails (~> 7.0)
       railties (~> 7.0)

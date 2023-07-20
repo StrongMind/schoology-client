@@ -13,3 +13,5 @@ gem "rubocop", "~> 1.21"
 
 gem 'faraday', '>= 2.0'
 gem 'simple_oauth'
+
+gem 'simplecov', require: false, group: :test
