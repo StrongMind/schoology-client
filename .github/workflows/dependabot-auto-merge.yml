@@ -19,10 +19,12 @@ permissions: {}
 jobs:
   dependabot:
     runs-on: ubuntu-latest
-    # Gate on the PR author (not github.actor). Skip github_actions ecosystem
+    # Gate on both the triggering actor and the PR author, so a human push to a
+    # Dependabot branch is never auto-approved. Skip github_actions ecosystem
     # updates so action bumps always get a human review.
     if: >-
       github.event_name == 'pull_request_target' &&
+      github.actor == 'dependabot[bot]' &&
       github.event.pull_request.user.login == 'dependabot[bot]' &&
       !startsWith(github.event.pull_request.head.ref, 'dependabot/github_actions/')
     permissions:
