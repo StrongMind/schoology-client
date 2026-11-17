@@ -7,5 +7,5 @@ jobs:
   PublishGem:
     uses: Strongmind/public-reusable-workflows/.github/workflows/publish-gem.yml@main
     with:
-      ruby_version: '3.1.4'
+      ruby_version: '3.1'
     secrets: inherit
